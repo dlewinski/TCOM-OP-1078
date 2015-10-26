@@ -1,0 +1,46 @@
+// Global variable overrides. Must be declared before importing Valo.
+
+$v-app-loading-text: "PVC Tecnocom Pedidos online...";
+$v-background-color: #fafafa;
+$v-app-background-color: #e7ebf2;
+$v-panel-background-color: #fff;
+$v-focus-color: #3b5998;
+$v-focus-style: 0 0 1px 1px rgba($v-focus-color, .5);
+$v-bevel-depth: 40%;
+$v-border-radius: 2px;
+$v-font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+$v-font-size: 14px;
+$v-font-color: #37404E;
+$v-font-weight: 400;
+$v-link-text-decoration: none;
+$v-shadow: 0 0 0 3px rgba(0,0,0,0.32), 0 1px 0 3px rgba(255,255,255,0.14);
+$v-bevel: inset 0 1px 2px v-tint, inset 0 0 1px (v-tint 0.1);
+$v-unit-size: 30px;
+$v-gradient: v-linear 12%;
+$v-overlay-shadow: 0 0 0 3px (v-shade 8), 0 5px 10px (v-shade 4);
+$v-shadow-opacity: 20%;
+$v-selection-overlay-padding-horizontal: 0;
+$v-selection-overlay-padding-vertical: 6px;
+$v-selection-item-border-radius: 0;
+$v-textfield-bevel: inset 0 1px 1px v-shade;
+$v-textfield-shadow: $v-shadow;
+$v-component-group-spacing: 6px;
+
+@import "../valo/valo.scss";
+@import "common.scss";
+@import "views/login.scss";
+
+@mixin store_crm {
+
+  	@include valo;  
+  	@include store_crm-common;
+	@include store_crm-login-view;	
+  
+  	// Insert your own theme rules here
+  
+	.scrollPageLayout
+	{
+		overflow: auto;
+	}		
+	
+}

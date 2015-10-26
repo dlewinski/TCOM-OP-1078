@@ -1,0 +1,2 @@
+ALTER TABLE `usuario` 
+ADD COLUMN `code` VARCHAR(250) NULL COMMENT '' AFTER `habilitado`;

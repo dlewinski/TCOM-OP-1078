@@ -1,0 +1,25 @@
+//QA
+
+//Servidor de aplicación
+jco.client.ashost=???
+
+//Número de instancia
+jco.client.sysnr=???
+
+//Mandante/Client QA
+jco.client.client=???
+
+//Idioma
+jco.client.lang=???
+
+//Usuario
+jco.client.user=???
+//jco.client.user=???
+
+//Paswword
+jco.client.passwd=???
+//jco.client.passwd=???
+
+//Otros
+jco.destination.peak_limit=???
+jco.destination.pool_capacity=??? 

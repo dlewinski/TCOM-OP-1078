@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Context 	
+	docBase="store-crm"
+    reloadable="true" 
+    crossContext="true"
+    antiResourceLocking="true"
+    >
+	<Resource 
+		name="jdbc/storeCRM-DS" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+        maxTotal="100" 
+        maxIdle="30" 
+        maxWaitMillis="10000"
+        username="???" 
+        password="???" 
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/storepvc-crm?autoReconnect=true"
+        testOnBorrow="true"
+		testOnReturn="false"
+		testWhileIdle="true"
+		validationQuery="Select 1"
+		timeBetweenEvictionRunsMillis="1800000"
+		/>
+		
+		<!--
+        This way the eviction thread runs every 30 minutes, 
+        testing idle connections with the query “Select 1″ 
+        and removing them from the pool. 
+        The timeBetweenEvictionRunsMillis should not be to low. 
+        It should be adapted to the configured MySQL wait_timeout.  
+        -->
+                                       
+</Context>			

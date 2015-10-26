@@ -1,0 +1,1 @@
+$wnd.com_pvctecnocom_store_crm_widgetset_Store_crmWidgetset.runAsyncCallback2('qab(1472,1,Apd);_.vc=function J3b(){ETb((!xTb&&(xTb=new JTb),xTb),this.b.e)};Yjd(Vh)(2);\n//# sourceURL=com.pvctecnocom.store.crm.widgetset.Store_crmWidgetset-2.js\n')
