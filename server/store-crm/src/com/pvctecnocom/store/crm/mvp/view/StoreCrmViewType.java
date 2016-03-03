@@ -3,7 +3,6 @@ package com.pvctecnocom.store.crm.mvp.view;
 import com.pvctecnocom.store.crm.mvp.view.sap.SAPArticulosView;
 import com.pvctecnocom.store.crm.mvp.view.sap.SAPCategoriasView;
 import com.pvctecnocom.store.crm.mvp.view.sap.SAPCentroAlmacenView;
-import com.pvctecnocom.store.crm.mvp.view.sap.SAPClienteView;
 import com.pvctecnocom.store.crm.mvp.view.sap.SAPClientesView;
 import com.pvctecnocom.store.crm.mvp.view.sap.SAPConnectView;
 import com.pvctecnocom.store.crm.mvp.view.sap.SAPDescuentosView;
@@ -21,8 +20,7 @@ public enum StoreCrmViewType
     SAP_CONNECT("sap-connect", SAPConnectView.class, FontAwesome.DASHBOARD, false, "Monitoreo de conexión a SAP"),
     SAP_ARTICULOS("sap-articulos", SAPArticulosView.class, FontAwesome.DATABASE, false, "Artículos"),
     SAP_CATEGORIAS("sap-categorias", SAPCategoriasView.class, FontAwesome.DATABASE, false, "Categorías"),
-    SAP_CENTRO_ALMACEN("sap-centro-almacen", SAPCentroAlmacenView.class, FontAwesome.DATABASE, false, "Centros y Almacenes"),
-    SAP_CLIENTE("sap-cliente", SAPClienteView.class, FontAwesome.EXCHANGE, false, "Cliente"),
+    SAP_CENTRO_ALMACEN("sap-centro-almacen", SAPCentroAlmacenView.class, FontAwesome.DATABASE, false, "Centros y Almacenes"),    
     SAP_CLIENTES("sap-clientes", SAPClientesView.class, FontAwesome.EXCHANGE, false, "Clientes"),
     SAP_DESCUENTOS("sap-descuentos", SAPDescuentosView.class, FontAwesome.EXCHANGE, false, "Descuentos"),
     SAP_OFERTAS("sap-ofertas", SAPOfertasView.class, FontAwesome.EXCHANGE, false, "Ofertas"),

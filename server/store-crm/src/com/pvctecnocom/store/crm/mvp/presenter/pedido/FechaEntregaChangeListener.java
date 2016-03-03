@@ -1,32 +1,30 @@
 package com.pvctecnocom.store.crm.mvp.presenter.pedido;
 
+import java.util.Date;
+
 import com.pvctecnocom.store.crm.mvp.util.Utility;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.ui.Table;
-import com.vaadin.ui.TextField;
 
 @SuppressWarnings("serial")
-public class ColumnDescuentoManualChangeListener implements ValueChangeListener
+public class FechaEntregaChangeListener implements ValueChangeListener
 {		
-	private Table tableProductos;			
-	private TextField txtCantidad;   
+	private Table tableProductos;				        		
 
 	public void setTableProductos(Table tableProductos) 
 	{
 		this.tableProductos = tableProductos;
-	}
-	
-	public void setTxtCantidad(TextField txtCantidad) 
-	{
-		this.txtCantidad = txtCantidad;
-	}
-	
+	}				
+		
 	@Override
 	public void valueChange(ValueChangeEvent event) 
-	{		
-		Utility.refreshTablaMateriales(tableProductos);
+	{						
+		Date fechaEntrega = null;
 		
-		txtCantidad.focus();
-	}		
+		if(event.getProperty() != null && event.getProperty().getValue() != null)
+			fechaEntrega = (Date)event.getProperty().getValue();
+		
+		Utility.refreshTablaMaterialesFechaEntrega(tableProductos, fechaEntrega);						
+	}
 }

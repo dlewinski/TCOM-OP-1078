@@ -13,6 +13,7 @@ CREATE TABLE `usuario` (
   `nro_vendedor_sap` varchar(250) DEFAULT NULL,
   `habilitado` varchar(250) DEFAULT NULL,
   `code` varchar(250) DEFAULT NULL,
+  `reset_password` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`usuario_id`),
   UNIQUE KEY `nombre_usuario_UNIQUE` (`nombre_usuario`),
   UNIQUE KEY `email_UNIQUE` (`email`),

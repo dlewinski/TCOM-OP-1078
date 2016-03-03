@@ -58,7 +58,7 @@ public class ProfilePreferencesWindow extends Window
 	
 	private Password password;
 	
-    private ProfilePreferencesWindow(final Usuario user, final boolean preferencesTabOpen) 
+    private ProfilePreferencesWindow(final Usuario user) 
     {
         addStyleName("profile-window");
         setId(ID);
@@ -92,10 +92,7 @@ public class ProfilePreferencesWindow extends Window
         beanFieldGroup = new BeanFieldGroup<Password>(Password.class);
         beanFieldGroup.bindMemberFields(this);
         beanFieldGroup.setItemDataSource(password);
-        beanFieldGroup.setBuffered(true);
-              
-        if (preferencesTabOpen)         
-            detailsWrapper.setSelectedTab(1);        
+        beanFieldGroup.setBuffered(true);                              
 
         content.addComponent(buildFooter());
         
@@ -262,10 +259,10 @@ public class ProfilePreferencesWindow extends Window
         return footer;
     }
 
-    public static void open(final Usuario user, final boolean preferencesTabActive) 
+    public static void open(final Usuario user) 
     {
     	StoreCrmEventBus.post(new CloseOpenWindowsEvent());
-        Window w = new ProfilePreferencesWindow(user, preferencesTabActive);
+        Window w = new ProfilePreferencesWindow(user);
         w.setWidth(90.0f, Unit.PERCENTAGE);
         UI.getCurrent().addWindow(w);        
     }

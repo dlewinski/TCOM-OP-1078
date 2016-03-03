@@ -47,5 +47,5 @@ public class MenuViewImpl implements MenuView
 	public void menuOK() 
 	{
 		((StoreCRM_UI)UI.getCurrent()).getPageLayout().getHeaderLayout().showMenu(this.menuStore);		
-	}            
+	}	
 }

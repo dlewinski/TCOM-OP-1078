@@ -227,8 +227,8 @@ public class PedidoNuevoPresenter
     			dfFechaEntrega.setEnabled(false);
     		
     		dfFechaEntrega.setValue(calendar.getTime());
-    	}    	    	    	
-    	    	    	
+    	}    	    	    	    	    	
+    	    	    	    	
     	TextField txtTipoCambio = new TextField("Tipo de cambio"); 
     	txtTipoCambio.setWidth("105px");
     	txtTipoCambio.setIcon(FontAwesome.DOLLAR);
@@ -653,7 +653,8 @@ public class PedidoNuevoPresenter
     	
     	ColumnCantidadChangeListener columnCantidadChangeListener;
     	ColumnDescuentoManualChangeListener columnDescuentoManualChangeListener;
-    	ColumnPrecioChangeListener columnPrecioChangeListener;
+    	ColumnPrecioChangeListener columnPrecioChangeListener;    	
+    	FechaEntregaChangeListener fechaEntregaChangeListener = new FechaEntregaChangeListener();    	
     	
     	Boolean isPrecioEditable = false;
     	Boolean isDescuentoEditable = false;
@@ -737,11 +738,11 @@ public class PedidoNuevoPresenter
 	    	txtPrecio.setHeight("25px");
 	    	txtPrecio.setWidth("100%");
 	    	txtPrecio.setEnabled(isPrecioEditable);	    	
-	    	txtPrecio.addStyleName(ValoTheme.TEXTFIELD_ALIGN_RIGHT);	    		    	
+	    	txtPrecio.addStyleName(ValoTheme.TEXTFIELD_ALIGN_RIGHT);		    		    	
 	    	
 	    	columnPrecioChangeListener = new ColumnPrecioChangeListener();
-	    	columnPrecioChangeListener.setTableProductos(this.tableProductos); 	    		    	
-	    	
+	    	columnPrecioChangeListener.setTableProductos(this.tableProductos);
+	    		    		    	
 	    	txtDescuentoManual = new TextField();		
 	    	txtDescuentoManual.setMaxLength(8);  
 	    	txtDescuentoManual.setValue("");
@@ -749,7 +750,9 @@ public class PedidoNuevoPresenter
 	    	txtDescuentoManual.setWidth("100%");
 	    	txtDescuentoManual.setEnabled(isDescuentoEditable);	    	
 	    	txtDescuentoManual.addStyleName(ValoTheme.TEXTFIELD_ALIGN_RIGHT);
-	    		    	
+	    	
+	    	columnPrecioChangeListener.setTxtDescuentoManual(txtDescuentoManual);
+	    	
 	    	columnDescuentoManualChangeListener = new ColumnDescuentoManualChangeListener();
 	    	columnDescuentoManualChangeListener.setTableProductos(this.tableProductos); 	    	
 			
@@ -760,8 +763,11 @@ public class PedidoNuevoPresenter
 			txtCantidad.setWidth("100%");			
 			txtCantidad.addStyleName(ValoTheme.TEXTFIELD_ALIGN_RIGHT);									
 			
+			columnDescuentoManualChangeListener.setTxtCantidad(txtCantidad);
+			
 			columnCantidadChangeListener = new ColumnCantidadChangeListener();    		
-    		columnCantidadChangeListener.setTableProductos(this.tableProductos);    		    		
+    		columnCantidadChangeListener.setTableProductos(this.tableProductos);        		
+    		columnCantidadChangeListener.setTxtCantidad(txtCantidad);
 						
 			btnQuitarProducto = new Button();
 	    	btnQuitarProducto.setEnabled(true);
@@ -859,7 +865,7 @@ public class PedidoNuevoPresenter
 			dfFechaEntregaPosicion.setWidth("100%");	
 		    dfFechaEntregaPosicion.setDateFormat("dd-MM-yyyy");
 		    dfFechaEntregaPosicion.setLocale(new Locale("es", "ES"));
-		    dfFechaEntregaPosicion.setValue(this.dfFechaEntrega.getValue());
+		    dfFechaEntregaPosicion.setValue(this.dfFechaEntrega.getValue());		    		    
 		    	
 		    if((this.accion.equalsIgnoreCase("modificarPedido") || this.accion.equalsIgnoreCase("modificarOferta") || this.accion.equalsIgnoreCase("verDetallePedido")) && !isAgregarProducto)
 	    	{		    	
@@ -905,6 +911,10 @@ public class PedidoNuevoPresenter
 	    		((StoreCRM_UI)UI.getCurrent()).getPageLayout().getHeaderLayout().refreshDatosSesion(cantidadTotal, importeTotal, true);
 		}	
 				
+		fechaEntregaChangeListener.setTableProductos(this.tableProductos);
+    	
+    	dfFechaEntrega.addValueChangeListener(fechaEntregaChangeListener);
+    	
 		this.tableProductos.setPageLength(pageLength);		
 	}
 	

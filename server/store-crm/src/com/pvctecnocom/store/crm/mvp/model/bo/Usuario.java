@@ -66,8 +66,12 @@ public class Usuario extends GenericBO
 	
 	@Column(name="habilitado")	
 	@Convert(converter=BooleanToStringConverter.class)
-	private Boolean habilitado;			
+	private Boolean habilitado;		
 	
+	@Column(name="reset_password")	
+	@Convert(converter=BooleanToStringConverter.class)
+	private Boolean resetPassword;		
+		
 	private String code;	
 
 	public Usuario()
@@ -193,6 +197,16 @@ public class Usuario extends GenericBO
 	public void setHabilitado(Boolean habilitado) 
 	{
 		this.habilitado = habilitado;
+	}
+	
+	public Boolean getResetPassword() 
+	{
+		return resetPassword;
+	}
+
+	public void setResetPassword(Boolean resetPassword) 
+	{
+		this.resetPassword = resetPassword;
 	}
 	
 	public String getCode() 

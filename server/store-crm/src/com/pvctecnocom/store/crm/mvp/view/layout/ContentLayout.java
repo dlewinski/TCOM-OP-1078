@@ -47,6 +47,6 @@ public class ContentLayout extends VerticalLayout
 		{	
 			this.horizontalLayoutBottom.addComponent(component);
 			this.horizontalLayoutBottom.setComponentAlignment(component, Alignment.MIDDLE_CENTER);
-		}	
+		}							        				
 	}
 }

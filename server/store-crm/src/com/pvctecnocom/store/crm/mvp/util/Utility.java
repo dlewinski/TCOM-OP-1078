@@ -2,10 +2,12 @@ package com.pvctecnocom.store.crm.mvp.util;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Date;
 import java.util.Iterator;
 
 import com.pvctecnocom.store.crm.StoreCRM_UI;
 import com.vaadin.data.Item;
+import com.vaadin.ui.DateField;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -169,6 +171,28 @@ public class Utility
 			}
 			
 			((StoreCRM_UI)UI.getCurrent()).getPageLayout().getHeaderLayout().refreshDatosSesion(cantidadTotal, netoTotal, true);	
+		}	
+	}
+		
+	public static void refreshTablaMaterialesFechaEntrega(Table tableProductos, Date fechaEntrega)
+	{		
+		if(tableProductos != null)
+		{																		
+			Iterator<?> it = tableProductos.getItemIds().iterator();
+			
+			Integer itemId;
+			Item item;
+								
+			DateField fechaEntregaRow;
+			
+			while (it.hasNext()) 
+			{				
+				itemId = (Integer) it.next();
+				item = tableProductos.getItem(itemId);
+				
+				fechaEntregaRow = (DateField)(item.getItemProperty("fechaEntrega").getValue());	
+				fechaEntregaRow.setValue(fechaEntrega);
+			}							
 		}	
 	}
 }

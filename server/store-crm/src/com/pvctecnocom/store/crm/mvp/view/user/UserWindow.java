@@ -382,6 +382,7 @@ public class UserWindow extends Window implements GenericWindow
 									String pass = "12345678";
 									user.setSalt(BCrypt.gensalt(11));
 									user.setPassword(BCrypt.hashpw(pass.concat(user.getSalt()), BCrypt.gensalt(11)));
+									user.setResetPassword(true);
 									userPresenter.update(user);
 		            		
 									if(user.isStatusOK())

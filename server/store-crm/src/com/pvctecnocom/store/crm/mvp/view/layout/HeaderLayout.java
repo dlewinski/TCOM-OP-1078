@@ -3,8 +3,10 @@ package com.pvctecnocom.store.crm.mvp.view.layout;
 import java.text.DecimalFormat;
 
 import com.pvctecnocom.store.crm.StoreCRM_UI;
+import com.pvctecnocom.store.crm.component.ProfilePreferencesWindow;
 import com.pvctecnocom.store.crm.event.StoreCrmEvent.UserLoggedOutEvent;
 import com.pvctecnocom.store.crm.event.StoreCrmEventBus;
+import com.pvctecnocom.store.crm.mvp.model.bo.Usuario;
 import com.pvctecnocom.store.crm.mvp.view.screen.pedido.PedidoViewImpl;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
@@ -77,6 +79,20 @@ public class HeaderLayout extends VerticalLayout
 		vendedorCRM.setIcon(FontAwesome.DESKTOP);	
 		vendedorCRM.setEnabled(false);
 		
+		Button btnCambiarPassword = new Button();		
+		btnCambiarPassword.setIcon(FontAwesome.KEY);
+		btnCambiarPassword.setDescription("Cambiar contraseña");	
+		btnCambiarPassword.addStyleName(ValoTheme.BUTTON_PRIMARY);
+		
+		btnCambiarPassword.addClickListener(new Button.ClickListener() 
+        {            												
+			@Override
+            public void buttonClick(Button.ClickEvent clickEvent) 
+            {  										
+				cambiarContrasena();
+            }
+        });
+		
 		Button btnCerrarSesion = new Button();		
 		btnCerrarSesion.setIcon(FontAwesome.POWER_OFF);
 		btnCerrarSesion.setDescription("Cerrar sesión");	
@@ -101,20 +117,22 @@ public class HeaderLayout extends VerticalLayout
 		this.horizontalLayout.setExpandRatio(lLogo, 2);
 		
 		this.horizontalLayout.addComponent(vendedorCRM);
-		this.horizontalLayout.setComponentAlignment(vendedorCRM, Alignment.BOTTOM_CENTER);
-		this.horizontalLayout.setExpandRatio(vendedorCRM, 1);		
+		this.horizontalLayout.setComponentAlignment(vendedorCRM, Alignment.BOTTOM_LEFT);				
 		
 		this.horizontalLayout.addComponent(menuBar);				
 		this.horizontalLayout.setComponentAlignment(menuBar, Alignment.BOTTOM_CENTER);
-		this.horizontalLayout.setExpandRatio(menuBar, 3);
+		this.horizontalLayout.setExpandRatio(menuBar, 2);
 		
 		this.horizontalLayout.addComponent(this.btnDatosSesion);
 		this.horizontalLayout.setComponentAlignment(this.btnDatosSesion, Alignment.BOTTOM_CENTER);
 		this.horizontalLayout.setExpandRatio(this.btnDatosSesion, 2);
 		
+		this.horizontalLayout.addComponent(btnCambiarPassword);
+		this.horizontalLayout.setComponentAlignment(btnCambiarPassword, Alignment.BOTTOM_CENTER);
+		this.horizontalLayout.setExpandRatio(btnCambiarPassword, 1);
+		
 		this.horizontalLayout.addComponent(btnCerrarSesion);
-		this.horizontalLayout.setComponentAlignment(btnCerrarSesion, Alignment.BOTTOM_RIGHT);
-		this.horizontalLayout.setExpandRatio(btnCerrarSesion, 1);					
+		this.horizontalLayout.setComponentAlignment(btnCerrarSesion, Alignment.BOTTOM_RIGHT);						
 		
 		new PedidoViewImpl();
 	}	
@@ -137,5 +155,12 @@ public class HeaderLayout extends VerticalLayout
 		
 		this.btnDatosSesion.setEnabled(isButtonEnabled);
 		this.btnDatosSesion.setCaption(datosSesion);
+	}
+	
+	private void cambiarContrasena()
+	{
+		final Usuario user = new Usuario().getUserSession();
+		
+		ProfilePreferencesWindow.open(user);
 	}
 }

@@ -57,7 +57,7 @@ public class PedidoPresenter
 		
 		VerticalLayout verticalLayout = new VerticalLayout();
     	verticalLayout.setSizeFull();
-    	verticalLayout.setSpacing(true);    			
+    	verticalLayout.setSpacing(true);    		    	    	
 		
 		Cliente cliente = ((StoreCRM_UI)UI.getCurrent()).getCliente();
 		
@@ -109,9 +109,17 @@ public class PedidoPresenter
 		tablePedidos.setColumnAlignment("estado",  Align.CENTER);
 		tablePedidos.setColumnAlignment("detalle", Align.CENTER);
 		tablePedidos.setColumnAlignment("modificar", Align.CENTER);
+				
+		tablePedidos.setColumnWidth("fecha", 85);
+		tablePedidos.setColumnWidth("moneda", 85);
+		tablePedidos.setColumnWidth("pedido", 110);
+		tablePedidos.setColumnWidth("neto", 110);
+		tablePedidos.setColumnWidth("estado", 175);
 		
 		tablePedidos.setColumnWidth("detalle", 115);
 		tablePedidos.setColumnWidth("modificar", 115);
+		
+		tablePedidos.setColumnExpandRatio("domicilio", 1);
 		
 		Button btnVerDetalle;
 		Button btnAccion;

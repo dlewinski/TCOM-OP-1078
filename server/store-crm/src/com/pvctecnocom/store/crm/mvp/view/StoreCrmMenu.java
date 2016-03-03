@@ -94,7 +94,7 @@ public final class StoreCrmMenu extends CustomComponent
             @Override
             public void menuSelected(final MenuItem selectedItem) 
             {
-                ProfilePreferencesWindow.open(user, false);
+                ProfilePreferencesWindow.open(user);
             }
         });                
         
@@ -191,11 +191,7 @@ public final class StoreCrmMenu extends CustomComponent
         separador.addStyleName("h4");
         separador.setSizeUndefined();        
 
-        menuItemsLayout.addComponent(separador);
-        
-        view = StoreCrmViewType.SAP_CLIENTE;        
-        menuItemComponent = new ValoMenuItemButton(view);
-        menuItemsLayout.addComponent(menuItemComponent);
+        menuItemsLayout.addComponent(separador);                
         
         view = StoreCrmViewType.SAP_CLIENTES;        
         menuItemComponent = new ValoMenuItemButton(view);

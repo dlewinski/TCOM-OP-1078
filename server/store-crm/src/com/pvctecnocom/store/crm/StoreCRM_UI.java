@@ -27,6 +27,7 @@ import com.pvctecnocom.store.crm.mvp.presenter.login.LoginPresenter;
 import com.pvctecnocom.store.crm.mvp.view.LoginView;
 import com.pvctecnocom.store.crm.mvp.view.MainView;
 import com.pvctecnocom.store.crm.mvp.view.NewPasswordView;
+import com.pvctecnocom.store.crm.mvp.view.ResetPasswordView;
 import com.pvctecnocom.store.crm.mvp.view.layout.PageLayout;
 import com.pvctecnocom.store.crm.mvp.view.screen.login.LoginViewImpl;
 import com.vaadin.annotations.Theme;
@@ -384,8 +385,13 @@ public class StoreCRM_UI extends UI
 	        				else
 	        					vendedorCrmNombre = vendedorCrmNombre + ", " + user.getNombre();
 	        			}
-	        				
-	        			initVendedorView(null, numeroVendedorSAP, vendedorCrmNombre);
+	        					       
+	        			Usuario userResetPassword = userService.findById(user.getId());
+	        			
+	        			if(userResetPassword.getResetPassword())	        		
+	        				updateContentResetPassword();	        			
+	        			else
+	        				initVendedorView(null, numeroVendedorSAP, vendedorCrmNombre);	        			
 	        		}	
 	        	}	
         	}
@@ -482,6 +488,12 @@ public class StoreCRM_UI extends UI
 	private void updateContentCode(String code) 
     {
 		setContent(new NewPasswordView(code));
+        addStyleName("loginview");
+    }
+	
+	private void updateContentResetPassword() 
+    {
+		setContent(new ResetPasswordView());
         addStyleName("loginview");
     }
 }
